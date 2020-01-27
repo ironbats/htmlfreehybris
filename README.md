@@ -4,7 +4,7 @@ The purpose of this application is to show how to retrieve an implementation tok
 
 
 
-#SWAGGER 
+# SWAGGER 
 
 http://localhost:8080/swagger-ui.html#!
 
