@@ -2,26 +2,17 @@ package br.com.html.http;
 
 import br.com.html.dto.CustomerDTO;
 import br.com.html.service.HybrisRetrievePageService;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.core.JsonParser;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.*;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.validation.BeanPropertyBindingResult;
-import org.springframework.validation.Errors;
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @RestController
 @RequestMapping("/register")

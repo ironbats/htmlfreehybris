@@ -1,24 +1,20 @@
 package br.com.html.dto;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.web.multipart.MultipartFile;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.io.Serializable;
-import java.util.List;
-
-public class CustomerDTO  implements Serializable {
+public class CustomerDTO  {
 
     /** Default serialVersionUID value. */
 
     private static final long serialVersionUID = 1L;
 
     /** <i>Generated property</i> for <code>CustomerDTO.email</code> property defined at extension <code>makrocommercewebservices</code>. */
-
+    @JsonIgnore
     private String email;
 
     /** <i>Generated property</i> for <code>CustomerDTO.docId</code> property defined at extension <code>makrocommercewebservices</code>. */
-
+    @JsonIgnore
     private String docId;
 
     /** <i>Generated property</i> for <code>CustomerDTO.socialName</code> property defined at extension <code>makrocommercewebservices</code>. */
