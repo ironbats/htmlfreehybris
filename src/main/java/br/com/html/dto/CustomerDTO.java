@@ -1,128 +1,212 @@
 package br.com.html.dto;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-public class CustomerDTO  {
+import java.io.Serializable;
 
-    /** Default serialVersionUID value. */
+@Data
+@Getter
+@Setter
+@AllArgsConstructor
+public class CustomerDTO implements Serializable {
+
+    /**
+     * Default serialVersionUID value.
+     */
 
     private static final long serialVersionUID = 1L;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.email</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.email</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
     private String email;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.docId</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.docId</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
     private String docId;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.socialName</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.socialName</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private String socialName;
 
     /** <i>Generated property</i> for <code>CustomerDTO.addressList</code> property defined at extension <code>makrocommercewebservices</code>. */
 
 
-    /** <i>Generated property</i> for <code>CustomerDTO.state</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.state</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private String state;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.custStore</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.custStore</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private String custStore;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.preferredStore</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.preferredStore</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private String preferredStore;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.stateRegistration</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.stateRegistration</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private Integer stateRegistration;
 
 
-    /** <i>Generated property</i> for <code>CustomerDTO.storeMbs</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.storeMbs</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private Integer storeMbs;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.contactType</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.contactType</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private String contactType;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.companyId</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.companyId</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private String companyId;
 
     /** <i>Generated property</i> for <code>CustomerDTO.docType</code> property defined at extension <code>makrocommercewebservices</code>. */
 
+    private AddressData address = new AddressData();
 
-    /** <i>Generated property</i> for <code>CustomerDTO.password</code> property defined at extension <code>makrocommercewebservices</code>. */
+
+
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.password</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private String password;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.checkPwd</code> property defined at extension <code>makrocommercewebservices</code>. */
+    private DocType docType = DocType.NIT;
+
+    public CustomerDTO() {
+
+    }
+
+    public void setDocType(DocType docType) {
+        this.docType = docType;
+    }
+
+    public DocType getDocType() {
+        return docType;
+    }
+
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.checkPwd</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private String checkPwd;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.gender</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.gender</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private String gender;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.birthDate</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.birthDate</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private String birthDate;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.otherBusiness</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.otherBusiness</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private String otherBusiness;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.commOptIn</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.commOptIn</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private boolean commOptIn;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.companyName</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.companyName</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private String companyName;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.emailInvoice</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.emailInvoice</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private String emailInvoice;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.inscricaoEstadual</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.inscricaoEstadual</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private String inscricaoEstadual;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.privacyPolice</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.privacyPolice</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private Boolean privacyPolice;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.phone</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.phone</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private String phone;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.cellphone</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.cellphone</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private String cellphone;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.firstName</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.firstName</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private String firstName;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.lastName</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.lastName</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private String lastName;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.cnpj</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.cnpj</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private String cnpj;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.cpf</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.cpf</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private String cpf;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.consentGiven</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.consentGiven</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private boolean consentGiven = true;
 
-    /** <i>Generated property</i> for <code>CustomerDTO.razaoSocial</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.razaoSocial</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
     private String razaoSocial;
 
@@ -137,409 +221,289 @@ public class CustomerDTO  {
         return custType;
     }
 
-    /** <i>Generated property</i> for <code>CustomerDTO.addresses</code> property defined at extension <code>makrocommercewebservices</code>. */
+    /**
+     * <i>Generated property</i> for <code>CustomerDTO.addresses</code> property defined at extension <code>makrocommercewebservices</code>.
+     */
 
 
-
-
-    public void setEmail(final String email)
-    {
+    public void setEmail(final String email) {
         this.email = email;
     }
 
 
-
-    public String getEmail()
-    {
+    public String getEmail() {
         return email;
     }
 
 
-
-    public void setDocId(final String docId)
-    {
+    public void setDocId(final String docId) {
         this.docId = docId;
     }
 
 
-
-    public String getDocId()
-    {
+    public String getDocId() {
         return docId;
     }
 
 
-
-    public void setSocialName(final String socialName)
-    {
+    public void setSocialName(final String socialName) {
         this.socialName = socialName;
     }
 
 
-
-    public String getSocialName()
-    {
+    public String getSocialName() {
         return socialName;
     }
 
 
-
-
-
-
-
-    public void setState(final String state)
-    {
+    public void setState(final String state) {
         this.state = state;
     }
 
 
-
-    public String getState()
-    {
+    public String getState() {
         return state;
     }
 
 
-
-    public void setCustStore(final String custStore)
-    {
+    public void setCustStore(final String custStore) {
         this.custStore = custStore;
     }
 
 
-
-    public String getCustStore()
-    {
+    public String getCustStore() {
         return custStore;
     }
 
 
-
-    public void setPreferredStore(final String preferredStore)
-    {
+    public void setPreferredStore(final String preferredStore) {
         this.preferredStore = preferredStore;
     }
 
 
-
-    public String getPreferredStore()
-    {
+    public String getPreferredStore() {
         return preferredStore;
     }
 
 
-
-    public void setStateRegistration(final Integer stateRegistration)
-    {
+    public void setStateRegistration(final Integer stateRegistration) {
         this.stateRegistration = stateRegistration;
     }
 
 
-
-    public Integer getStateRegistration()
-    {
+    public Integer getStateRegistration() {
         return stateRegistration;
     }
 
 
-
-
-
-    public void setStoreMbs(final Integer storeMbs)
-    {
+    public void setStoreMbs(final Integer storeMbs) {
         this.storeMbs = storeMbs;
     }
 
 
-
-    public Integer getStoreMbs()
-    {
+    public Integer getStoreMbs() {
         return storeMbs;
     }
 
 
-
-    public void setContactType(final String contactType)
-    {
+    public void setContactType(final String contactType) {
         this.contactType = contactType;
     }
 
 
-
-    public String getContactType()
-    {
+    public String getContactType() {
         return contactType;
     }
 
 
-
-    public void setCompanyId(final String companyId)
-    {
+    public void setCompanyId(final String companyId) {
         this.companyId = companyId;
     }
 
 
-
-    public String getCompanyId()
-    {
+    public String getCompanyId() {
         return companyId;
     }
 
 
-
-    public void setPassword(final String password)
-    {
+    public void setPassword(final String password) {
         this.password = password;
     }
 
 
-
-    public String getPassword()
-    {
+    public String getPassword() {
         return password;
     }
 
 
-
-    public void setCheckPwd(final String checkPwd)
-    {
+    public void setCheckPwd(final String checkPwd) {
         this.checkPwd = checkPwd;
     }
 
 
-
-    public String getCheckPwd()
-    {
+    public String getCheckPwd() {
         return checkPwd;
     }
 
 
-
-    public void setGender(final String gender)
-    {
+    public void setGender(final String gender) {
         this.gender = gender;
     }
 
 
-
-    public String getGender()
-    {
+    public String getGender() {
         return gender;
     }
 
 
-
-    public void setBirthDate(final String birthDate)
-    {
+    public void setBirthDate(final String birthDate) {
         this.birthDate = birthDate;
     }
 
 
-
-    public String getBirthDate()
-    {
+    public String getBirthDate() {
         return birthDate;
     }
 
 
-
-    public void setOtherBusiness(final String otherBusiness)
-    {
+    public void setOtherBusiness(final String otherBusiness) {
         this.otherBusiness = otherBusiness;
     }
 
 
-
-    public String getOtherBusiness()
-    {
+    public String getOtherBusiness() {
         return otherBusiness;
     }
 
 
-
-    public void setCommOptIn(final boolean commOptIn)
-    {
+    public void setCommOptIn(final boolean commOptIn) {
         this.commOptIn = commOptIn;
     }
 
 
-
-    public boolean isCommOptIn()
-    {
+    public boolean isCommOptIn() {
         return commOptIn;
     }
 
 
-
-    public void setCompanyName(final String companyName)
-    {
+    public void setCompanyName(final String companyName) {
         this.companyName = companyName;
     }
 
 
-
-    public String getCompanyName()
-    {
+    public String getCompanyName() {
         return companyName;
     }
 
 
-
-    public void setEmailInvoice(final String emailInvoice)
-    {
+    public void setEmailInvoice(final String emailInvoice) {
         this.emailInvoice = emailInvoice;
     }
 
 
-
-    public String getEmailInvoice()
-    {
+    public String getEmailInvoice() {
         return emailInvoice;
     }
 
 
-
-    public void setInscricaoEstadual(final String inscricaoEstadual)
-    {
+    public void setInscricaoEstadual(final String inscricaoEstadual) {
         this.inscricaoEstadual = inscricaoEstadual;
     }
 
 
-
-    public String getInscricaoEstadual()
-    {
+    public String getInscricaoEstadual() {
         return inscricaoEstadual;
     }
 
 
-
-    public void setPrivacyPolice(final Boolean privacyPolice)
-    {
+    public void setPrivacyPolice(final Boolean privacyPolice) {
         this.privacyPolice = privacyPolice;
     }
 
 
-
-    public Boolean getPrivacyPolice()
-    {
+    public Boolean getPrivacyPolice() {
         return privacyPolice;
     }
 
 
-
-    public void setPhone(final String phone)
-    {
+    public void setPhone(final String phone) {
         this.phone = phone;
     }
 
 
-
-    public String getPhone()
-    {
+    public String getPhone() {
         return phone;
     }
 
 
-
-    public void setCellphone(final String cellphone)
-    {
+    public void setCellphone(final String cellphone) {
         this.cellphone = cellphone;
     }
 
 
-
-    public String getCellphone()
-    {
+    public String getCellphone() {
         return cellphone;
     }
 
 
-
-    public void setFirstName(final String firstName)
-    {
+    public void setFirstName(final String firstName) {
         this.firstName = firstName;
     }
 
 
-
-    public String getFirstName()
-    {
+    public String getFirstName() {
         return firstName;
     }
 
 
-
-    public void setLastName(final String lastName)
-    {
+    public void setLastName(final String lastName) {
         this.lastName = lastName;
     }
 
 
-
-    public String getLastName()
-    {
+    public String getLastName() {
         return lastName;
     }
 
 
-
-    public void setCnpj(final String cnpj)
-    {
+    public void setCnpj(final String cnpj) {
         this.cnpj = cnpj;
     }
 
 
-
-    public String getCnpj()
-    {
+    public String getCnpj() {
         return cnpj;
     }
 
 
-
-    public void setCpf(final String cpf)
-    {
+    public void setCpf(final String cpf) {
         this.cpf = cpf;
     }
 
 
-
-    public String getCpf()
-    {
+    public String getCpf() {
         return cpf;
     }
 
 
-
-    public void setConsentGiven(final Boolean consentGiven)
-    {
+    public void setConsentGiven(final Boolean consentGiven) {
         this.consentGiven = consentGiven;
     }
 
 
-
-    public Boolean getConsentGiven()
-    {
+    public Boolean getConsentGiven() {
         return consentGiven;
     }
 
 
-
-    public void setRazaoSocial(final String razaoSocial)
-    {
+    public void setRazaoSocial(final String razaoSocial) {
         this.razaoSocial = razaoSocial;
     }
 
 
-
-    public String getRazaoSocial()
-    {
+    public String getRazaoSocial() {
         return razaoSocial;
     }
-
-
-
 
 
 }
