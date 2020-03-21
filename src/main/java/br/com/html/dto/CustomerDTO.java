@@ -10,11 +10,9 @@ public class CustomerDTO  {
     private static final long serialVersionUID = 1L;
 
     /** <i>Generated property</i> for <code>CustomerDTO.email</code> property defined at extension <code>makrocommercewebservices</code>. */
-    @JsonIgnore
     private String email;
 
     /** <i>Generated property</i> for <code>CustomerDTO.docId</code> property defined at extension <code>makrocommercewebservices</code>. */
-    @JsonIgnore
     private String docId;
 
     /** <i>Generated property</i> for <code>CustomerDTO.socialName</code> property defined at extension <code>makrocommercewebservices</code>. */
@@ -122,12 +120,22 @@ public class CustomerDTO  {
 
     /** <i>Generated property</i> for <code>CustomerDTO.consentGiven</code> property defined at extension <code>makrocommercewebservices</code>. */
 
-    private Boolean consentGiven;
+    private boolean consentGiven = true;
 
     /** <i>Generated property</i> for <code>CustomerDTO.razaoSocial</code> property defined at extension <code>makrocommercewebservices</code>. */
 
     private String razaoSocial;
 
+    private String custType;
+
+
+    public void setCustType(String custType) {
+        this.custType = custType;
+    }
+
+    public String getCustType() {
+        return custType;
+    }
 
     /** <i>Generated property</i> for <code>CustomerDTO.addresses</code> property defined at extension <code>makrocommercewebservices</code>. */
 

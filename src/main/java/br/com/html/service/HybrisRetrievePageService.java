@@ -3,25 +3,19 @@ package br.com.html.service;
 import br.com.html.auth.HybrisOauthToken;
 import br.com.html.domain.Component;
 import br.com.html.dto.CustomerDTO;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.*;
-import org.springframework.http.converter.FormHttpMessageConverter;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.ResourceHttpMessageConverter;
-import org.springframework.http.converter.StringHttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Service;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.charset.Charset;
+import java.io.*;
 import java.util.*;
 
 @Service
@@ -38,6 +32,9 @@ public class HybrisRetrievePageService {
 
     @Value("${hybris.url.component.complement}")
     private String urlPageComplement;
+    
+    private static final String PATH ="/home/themarkiron/Desktop/MAKRO_SAVE_FILES/arquivoinicio/";
+    private static final String URL = "https://localhost:9002/makrocommercewebservices/v2/makro-co/customer/step4";
 
     public String getPageHtmlHybris(String pageId) {
 
@@ -53,7 +50,31 @@ public class HybrisRetrievePageService {
 
     }
 
+
     public String sendValuesToHybris(MultipartFile[] file, CustomerDTO customerDTO) throws IOException {
+
+        ResponseEntity responseEntity = null;
+
+        try {
+
+            for(int i =0; i  < file.length;i++) {
+                byte[] bytes = file[i].getBytes();
+                String path = PATH+file[i].getOriginalFilename();
+                File fileToSave = new File(path);
+                FileCopyUtils.copy(bytes, fileToSave);
+            }
+
+
+            responseEntity  =  sendFiletoHybris(file, URL, customerDTO);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return responseEntity.toString();
+    }
+
+    public ResponseEntity sendFiletoHybris(MultipartFile[] file, String url, CustomerDTO customerDTO) throws JsonProcessingException {
 
         final HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + hybrisOauthToken.getToken().getAccessToken());
@@ -62,44 +83,30 @@ public class HybrisRetrievePageService {
         multiValueMap.add("Content-Type", "multipart/form-data");
         headers.addAll(multiValueMap);
 
-        List<HttpMessageConverter<?>> converters = new ArrayList<HttpMessageConverter<?>>();
-        converters.add(new MappingJackson2HttpMessageConverter());
-        converters.add(new StringHttpMessageConverter(Charset.forName("UTF-8")));
-        converters.add(new StringHttpMessageConverter());
-        converters.add(new FormHttpMessageConverter());
-        converters.add(new ResourceHttpMessageConverter());
-        restTemplate.setMessageConverters(converters);
-
-        ResponseEntity<String> response = null;
-
-
-        List<String> tempFileNames = new ArrayList<>();
         MultiValueMap<String, Object> params = new LinkedMultiValueMap<>();
-        String tempFileName = null;
-        FileOutputStream fo;
-
-        try {
-
-            for (MultipartFile f : file) {
-                tempFileName = "/tmp/" + f.getOriginalFilename();
-                tempFileNames.add(tempFileName);
-                fo = new FileOutputStream(tempFileName);
-                fo.write(tempFileName.getBytes());
-                fo.close();
-                params.add("file", new FileSystemResource(tempFileName));
-            }
 
 
-            String url = "https://localhost:9002/makrocommercewebservices/v2/makro-co/customer/step4";
-            ObjectMapper objectMapper = new ObjectMapper();
-            String jsonInString = objectMapper.writeValueAsString(customerDTO);
-            params.add("customerJson", jsonInString);
-            restTemplate.postForObject(url, new HttpEntity<>(params, headers), Map.class);
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonInString = objectMapper.writeValueAsString(customerDTO);
+        params.add("customerJson", jsonInString);
 
+        File f = null;
 
-        } catch (IOException e) {
-            e.printStackTrace();
+        for(MultipartFile multipartFile : file)
+        {
+            f = new File(PATH + multipartFile.getOriginalFilename());
+            final FileSystemResource fsr = new FileSystemResource(f.getPath());
+            params.add("file", fsr);
         }
-        return response.getBody();
+
+        params.add("customerJson", customerDTO);
+
+        final HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(new LinkedMultiValueMap<String, Object>(), headers);
+        requestEntity.getBody().addAll(params);
+
+        RestTemplate restTemplate = new RestTemplate();
+        return  restTemplate.exchange(url, HttpMethod.POST, requestEntity, String.class);
     }
+
+
 }

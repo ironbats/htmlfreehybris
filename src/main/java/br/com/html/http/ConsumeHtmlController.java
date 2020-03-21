@@ -2,16 +2,12 @@ package br.com.html.http;
 
 import br.com.html.dto.CustomerDTO;
 import br.com.html.service.HybrisRetrievePageService;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.*;
-
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
-
 
 
 @RestController
@@ -51,5 +47,7 @@ public class ConsumeHtmlController {
 
         return ResponseEntity.ok("OK");
     }
+
+
 
 }

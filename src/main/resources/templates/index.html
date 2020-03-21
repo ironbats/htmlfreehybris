@@ -59,9 +59,15 @@
                                                           class="form-control" id="companyName" name="companyName" value="12312312312">
 
     <div class="form-group">
-        <label for="consentGiven">consentGiven:</label> <input type="text"
-                                                        class="form-control" id="consentGiven" name="consentGiven" >
+        <label for="consentGiven">consentGiven:</label> <input type="checkbox"
+                                                        class="form-control" id="consentGiven" name="consentGiven" value="true">
     </div>
+
+        <div class="form-group">
+            <label for="custType">custType:</label> <input type="text"
+                                                                   class="form-control" id="custType" name="custType" value="BUSINESS_CUSTOMER">
+        </div>
+
 
     <div class="form-group">
         <label for="contactType">contactType:</label> <input type="text"
@@ -225,7 +231,8 @@ $(document).ready(function () {
             "razaoSocial" : $("#razaoSocial").val(),
             "socialName" : $("#socialName").val(),
             "state" : $("#state").val(),
-            "stateRegistration" : $("#stateRegistration").val()
+            "stateRegistration" : $("#stateRegistration").val(),
+            "custType":$("#custType").val()
 
         };
         data.append("userDto", JSON.stringify(userDto));
